@@ -20,7 +20,7 @@ Quiz App AI é uma ferramenta educativa desenvolvida com Streamlit e alimentada 
 
 1. Clone este repositório:
 ```bash
-git clone https://github.com/seu-usuario/quiz-app-ai.git
+git clone https://github.com/aryribeiro/quiz-app-ai.git
 cd quiz-app-ai
 ```
 
