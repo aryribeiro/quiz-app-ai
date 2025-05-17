@@ -1,3 +1,6 @@
+Obs.: caso o app esteja no modo "sleeping" (dormindo) ao entrar, basta clicar no botão que estará disponível e aguardar, para ativar o mesmo. 
+![print](https://github.com/user-attachments/assets/9c993151-866d-4d10-8bda-a72e25a37153)
+
 # 🧾 Quiz App AI 🤖
 
 Uma aplicação web interativa que gera quizzes de múltipla escolha sobre qualquer tópico usando IA generativa.
