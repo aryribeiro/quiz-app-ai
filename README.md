@@ -1,23 +1,25 @@
 Obs.: caso o app esteja no modo "sleeping" (dormindo) ao entrar, basta clicar no botão que estará disponível e aguardar, para ativar o mesmo. 
 ![print](https://github.com/user-attachments/assets/9c993151-866d-4d10-8bda-a72e25a37153)
-
 # 🧾 Quiz App AI 🤖
 
-Uma aplicação web interativa que gera quizzes de múltipla escolha sobre qualquer tópico usando IA generativa.
+Uma aplicação web interativa que gera quizzes de múltipla escolha sobre TI, certificações AWS, DevOps e idiomas — combinando um banco de questões validadas com IA generativa ancorada em fatos verificados.
 
 ## 📋 Descrição
 
-Quiz App AI é uma ferramenta educativa desenvolvida com Streamlit e alimentada por IA através da API OpenRouter. O aplicativo permite gerar questões de múltipla escolha personalizadas sobre qualquer tema de interesse, tornando o aprendizado mais dinâmico e interativo.
+Quiz App AI é uma ferramenta educativa desenvolvida com Streamlit e alimentada por IA através da API OpenRouter. Projetada para uso em sala de aula, ela usa uma arquitetura híbrida anti-alucinação: questões de temas AWS vêm prioritariamente de um banco curado e validado por humano, e as questões geradas por IA passam por ancoragem em uma base de conhecimento e por dupla checagem automática antes de chegarem ao aluno.
 
 ## ✨ Funcionalidades
 
-- 🎯 Geração de quizzes personalizados sobre qualquer tópico de TI
+- 🎯 Menu de temas prontos: certificações AWS (Cloud Practitioner, AI Practitioner, Developer Associate, Solutions Architect Associate), Docker, Kubernetes, Git e GitHub, Terraform, Inglês e Espanhol — ou tema livre digitado
+- 📚 Banco com 51 questões AWS curadas e validadas (zero alucinação), com sorteio e alternativas reembaralhadas a cada quiz
+- 🧠 Base de conhecimento com 235 serviços AWS (`servicos.json`) injetada no prompt para ancorar a geração por IA em fatos verificados
+- ✅ Dupla checagem: cada questão gerada volta ao modelo para ser respondida às cegas; gabaritos inconsistentes são descartados automaticamente
+- 🔒 JSON mode nativo na API — elimina erros de formato na geração
+- ⚡ Cache global de 24h compartilhado entre usuários: a turma inteira no mesmo tema consome uma única chamada à API
+- 🏷️ Selo de origem em cada questão: "📚 banco validado" ou "🤖 gerada por IA · dupla checagem ✅"
 - 🔢 Configuração do número de questões (1-10)
-- 💾 Sistema de cache para reduzir chamadas à API
-- ✅ Validação e verificação automática de respostas
-- 📊 Pontuação final com estatísticas de desempenho
-- 🌐 Interface limpa e intuitiva
-- 📅 Exibição de data e hora em português no rodapé
+- 📊 Feedback imediato com explicação, pontuação final e opções de refazer ou iniciar novo quiz
+- 📅 Relógio ao vivo com data por extenso em português no rodapé
 
 ## 🚀 Como instalar
 
@@ -56,15 +58,21 @@ Para usar esta aplicação, você precisará:
 
 ## 🖥️ Exemplo de uso
 
-1. Escolha um tópico de interesse no campo "Tópico" (ou deixe em branco para um quiz geral de TI)
+1. Escolha um tema no menu suspenso (ou selecione "✏️ Outro tema" e digite o seu)
 2. Defina o número de questões (1-10)
 3. Clique em "Iniciar Quiz"
-4. Responda às questões selecionando as opções
-5. Veja sua pontuação final ao término do quiz
+4. Responda às questões e leia a explicação de cada resposta
+5. Veja sua pontuação final e refaça o quiz ou inicie um novo
 
 ## 🧠 Como funciona
 
-O aplicativo utiliza a API OpenRouter para acessar modelos de linguagem avançados que geram questões de múltipla escolha sobre o tópico solicitado. O sistema valida as respostas recebidas, garantindo que todas as questões tenham o formato correto antes de apresentá-las ao usuário.
+O app decide a fonte das questões conforme o tema:
+
+1. **Temas AWS cobertos pelo banco** (ex.: Cloud Practitioner, S3, EC2): as questões são sorteadas do arquivo `questoes_aws.json` — validadas por humano, sem chamada à API e com alternativas reembaralhadas para evitar decoreba.
+2. **Temas AWS fora do banco** (ex.: AI Practitioner, Braket): a IA gera questões ancorada nas descrições verificadas do `servicos.json`, instruída a usar exclusivamente esses fatos.
+3. **Demais temas** (Docker, Git, idiomas etc.): geração por IA com prompt reforçado (exemplo few-shot, apenas fatos consensuais) em JSON mode.
+
+Toda questão gerada por IA passa por **dupla checagem**: o modelo responde à própria questão sem ver o gabarito e, se a resposta independente divergir, a questão é descartada e reposta. A parte gerada fica em cache global por 24 horas, compartilhado entre todos os usuários do app.
 
 ## 📝 Licença
 
@@ -78,7 +86,6 @@ aryribeiro@gmail.com
 ---
 
 🔧 **Tecnologias utilizadas:**
-- Python
-- Streamlit
-- OpenRouter API (acesso a modelos de IA)
-- Locale (para formatação de data e hora em português)
+- Python + Streamlit
+- OpenRouter API (gpt-3.5-turbo com JSON mode)
+- Banco de questões curadas (`questoes_aws.json`) e base de conhecimento AWS (`servicos.json`)

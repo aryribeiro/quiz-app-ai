@@ -1,0 +1,665 @@
+[
+  {
+    "id": "s3-001",
+    "services": ["S3"],
+    "question": "Qual tipo de armazenamento o Amazon S3 oferece?",
+    "options": {
+      "A": "Armazenamento de blocos para instâncias EC2",
+      "B": "Armazenamento de objetos acessível via API",
+      "C": "Sistema de arquivos NFS compartilhado",
+      "D": "Banco de dados relacional gerenciado"
+    },
+    "answer": "B",
+    "explanation": "O S3 (Simple Storage Service) é um serviço de armazenamento de OBJETOS, acessado via API HTTP. Armazenamento de blocos é o EBS, sistema de arquivos NFS é o EFS e banco relacional é o RDS."
+  },
+  {
+    "id": "s3-002",
+    "services": ["S3"],
+    "question": "Qual é a durabilidade projetada dos objetos armazenados no S3 Standard?",
+    "options": {
+      "A": "99,99% (quatro noves)",
+      "B": "99,9% (três noves)",
+      "C": "99,999999999% (onze noves)",
+      "D": "100% garantida por contrato"
+    },
+    "answer": "C",
+    "explanation": "O S3 Standard foi projetado para 99,999999999% (11 noves) de durabilidade, replicando os objetos em múltiplas Zonas de Disponibilidade. Os 99,99% referem-se à DISPONIBILIDADE, não à durabilidade."
+  },
+  {
+    "id": "s3-003",
+    "services": ["S3", "S3 Glacier"],
+    "question": "Qual classe de armazenamento do S3 é a mais indicada para arquivamento de longo prazo com o menor custo, aceitando recuperação em até 12 horas?",
+    "options": {
+      "A": "S3 Standard",
+      "B": "S3 Intelligent-Tiering",
+      "C": "S3 Standard-IA",
+      "D": "S3 Glacier Deep Archive"
+    },
+    "answer": "D",
+    "explanation": "O S3 Glacier Deep Archive é a classe de menor custo da AWS, projetada para retenção de longo prazo (7-10+ anos) com tempo de recuperação padrão de 12 horas."
+  },
+  {
+    "id": "s3-004",
+    "services": ["S3"],
+    "question": "Qual é o tamanho máximo de um único objeto no Amazon S3?",
+    "options": {
+      "A": "5 GB",
+      "B": "5 TB",
+      "C": "500 GB",
+      "D": "Ilimitado"
+    },
+    "answer": "B",
+    "explanation": "Um único objeto no S3 pode ter até 5 TB. Para objetos maiores que 100 MB, a AWS recomenda usar multipart upload. O armazenamento TOTAL do bucket é que não tem limite."
+  },
+  {
+    "id": "s3-005",
+    "services": ["S3"],
+    "question": "Qual recurso do S3 protege contra exclusão ou sobrescrita acidental de objetos, mantendo versões anteriores?",
+    "options": {
+      "A": "Versionamento (Versioning)",
+      "B": "Replicação entre regiões",
+      "C": "Transfer Acceleration",
+      "D": "Políticas de ciclo de vida"
+    },
+    "answer": "A",
+    "explanation": "O Versionamento mantém todas as versões de um objeto, permitindo recuperar versões anteriores após sobrescrita ou exclusão acidental. A replicação copia dados, mas não é seu propósito principal proteger contra exclusão."
+  },
+  {
+    "id": "ec2-001",
+    "services": ["EC2"],
+    "question": "Qual modelo de compra do EC2 oferece os maiores descontos (até 90%) para cargas de trabalho que toleram interrupções?",
+    "options": {
+      "A": "Instâncias On-Demand",
+      "B": "Instâncias Reservadas",
+      "C": "Instâncias Spot",
+      "D": "Dedicated Hosts"
+    },
+    "answer": "C",
+    "explanation": "Instâncias Spot usam capacidade ociosa da AWS com desconto de até 90%, mas podem ser interrompidas com aviso de 2 minutos quando a AWS precisa da capacidade de volta. Ideais para processamento em lote e cargas tolerantes a falhas."
+  },
+  {
+    "id": "ec2-002",
+    "services": ["EC2"],
+    "question": "O que é um Security Group no contexto do EC2?",
+    "options": {
+      "A": "Um grupo de usuários IAM com as mesmas permissões",
+      "B": "Um firewall virtual que controla o tráfego de entrada e saída da instância",
+      "C": "Um conjunto de instâncias na mesma Zona de Disponibilidade",
+      "D": "Uma política de backup automático das instâncias"
+    },
+    "answer": "B",
+    "explanation": "O Security Group atua como um firewall virtual no nível da instância, controlando tráfego de entrada e saída por regras de porta, protocolo e origem/destino. Ele é stateful: respostas a conexões permitidas são liberadas automaticamente."
+  },
+  {
+    "id": "ec2-003",
+    "services": ["EC2"],
+    "question": "O que é uma AMI (Amazon Machine Image)?",
+    "options": {
+      "A": "Um template com sistema operacional e software usado para lançar instâncias EC2",
+      "B": "Um tipo de instância otimizada para machine learning",
+      "C": "O console de gerenciamento das instâncias",
+      "D": "Um serviço de monitoramento de máquinas virtuais"
+    },
+    "answer": "A",
+    "explanation": "A AMI é uma imagem-template que contém o sistema operacional, aplicações e configurações necessárias para lançar novas instâncias EC2. É possível usar AMIs da AWS, do Marketplace ou criar as suas próprias."
+  },
+  {
+    "id": "ec2-004",
+    "services": ["EC2"],
+    "question": "Ao ESCOLHER um tipo de instância EC2 (ex.: c5.xlarge vs r5.xlarge), o que a família da instância (letra inicial) indica?",
+    "options": {
+      "A": "A região onde a instância será executada",
+      "B": "O perfil de otimização de recursos, como computação, memória ou armazenamento",
+      "C": "A versão do sistema operacional instalado",
+      "D": "O modelo de cobrança da instância"
+    },
+    "answer": "B",
+    "explanation": "A letra da família indica o perfil de otimização: C = otimizada para computação (CPU), R = otimizada para memória (RAM), T = uso geral com burst, I/D = armazenamento, P/G = GPU, entre outras."
+  },
+  {
+    "id": "iam-001",
+    "services": ["IAM"],
+    "question": "Qual é a função principal do AWS IAM?",
+    "options": {
+      "A": "Monitorar o desempenho das aplicações",
+      "B": "Gerenciar identidades e controlar permissões de acesso aos recursos AWS",
+      "C": "Criptografar dados armazenados no S3",
+      "D": "Distribuir tráfego entre servidores"
+    },
+    "answer": "B",
+    "explanation": "O IAM (Identity and Access Management) gerencia usuários, grupos, funções (roles) e políticas que definem quem pode acessar quais recursos da AWS e quais ações pode executar. É um serviço global e gratuito."
+  },
+  {
+    "id": "iam-002",
+    "services": ["IAM"],
+    "question": "Qual princípio de segurança recomenda conceder apenas as permissões mínimas necessárias para realizar uma tarefa?",
+    "options": {
+      "A": "Defesa em profundidade",
+      "B": "Responsabilidade compartilhada",
+      "C": "Princípio do menor privilégio",
+      "D": "Segregação de ambientes"
+    },
+    "answer": "C",
+    "explanation": "O princípio do menor privilégio (least privilege) é uma das principais boas práticas do IAM: cada usuário ou serviço deve ter somente as permissões estritamente necessárias, reduzindo o impacto de credenciais comprometidas."
+  },
+  {
+    "id": "iam-003",
+    "services": ["IAM"],
+    "question": "Qual é a principal diferença entre um IAM User e uma IAM Role?",
+    "options": {
+      "A": "Roles fornecem credenciais temporárias e podem ser assumidas por serviços ou usuários; Users têm credenciais permanentes",
+      "B": "Users são gratuitos e Roles são pagas",
+      "C": "Roles só funcionam com EC2; Users funcionam com qualquer serviço",
+      "D": "Não há diferença, são sinônimos"
+    },
+    "answer": "A",
+    "explanation": "Uma Role é uma identidade com credenciais TEMPORÁRIAS que pode ser assumida por serviços (ex.: uma instância EC2 acessando o S3), usuários ou contas externas. Users têm credenciais de longo prazo (senha, access keys)."
+  },
+  {
+    "id": "vpc-001",
+    "services": ["VPC"],
+    "question": "O que é uma Amazon VPC?",
+    "options": {
+      "A": "Uma rede virtual logicamente isolada onde você lança seus recursos AWS",
+      "B": "Um serviço de VPN para acesso remoto de funcionários",
+      "C": "Um cluster de máquinas virtuais de alta performance",
+      "D": "Um serviço de CDN para entrega de conteúdo"
+    },
+    "answer": "A",
+    "explanation": "A VPC (Virtual Private Cloud) é uma rede virtual isolada logicamente dentro da AWS, onde você define faixas de IP, sub-redes, tabelas de rotas e gateways para seus recursos."
+  },
+  {
+    "id": "vpc-002",
+    "services": ["VPC"],
+    "question": "O que torna uma sub-rede (subnet) 'pública' em uma VPC?",
+    "options": {
+      "A": "Ter mais de 100 instâncias em execução",
+      "B": "Estar associada a uma tabela de rotas com rota para um Internet Gateway",
+      "C": "Usar endereços IP da faixa 10.0.0.0/8",
+      "D": "Permitir acesso SSH na porta 22"
+    },
+    "answer": "B",
+    "explanation": "Uma sub-rede é considerada pública quando sua tabela de rotas tem uma rota (0.0.0.0/0) apontando para um Internet Gateway, permitindo comunicação direta com a internet."
+  },
+  {
+    "id": "vpc-003",
+    "services": ["VPC"],
+    "question": "Qual componente permite que instâncias em uma sub-rede PRIVADA acessem a internet para downloads, sem receber conexões de entrada?",
+    "options": {
+      "A": "Internet Gateway",
+      "B": "VPC Peering",
+      "C": "NAT Gateway",
+      "D": "Elastic IP"
+    },
+    "answer": "C",
+    "explanation": "O NAT Gateway permite tráfego de SAÍDA da sub-rede privada para a internet (ex.: baixar atualizações), mas bloqueia conexões iniciadas de fora. O Internet Gateway daria acesso bidirecional, tornando a sub-rede pública."
+  },
+  {
+    "id": "lambda-001",
+    "services": ["Lambda"],
+    "question": "Qual é a característica principal do modelo de computação do AWS Lambda?",
+    "options": {
+      "A": "Servidores dedicados com pagamento mensal fixo",
+      "B": "Execução de código orientada a eventos sem gerenciar servidores, pagando pelo tempo de execução",
+      "C": "Máquinas virtuais com GPU para treinamento de modelos",
+      "D": "Hospedagem de sites estáticos"
+    },
+    "answer": "B",
+    "explanation": "O Lambda é serverless: você envia o código, ele executa em resposta a eventos e a cobrança é por número de invocações e tempo de execução (por milissegundo), sem provisionar servidores."
+  },
+  {
+    "id": "lambda-002",
+    "services": ["Lambda"],
+    "question": "Qual é o tempo máximo de execução de uma função AWS Lambda por invocação?",
+    "options": {
+      "A": "30 segundos",
+      "B": "5 minutos",
+      "C": "15 minutos",
+      "D": "1 hora"
+    },
+    "answer": "C",
+    "explanation": "Uma função Lambda pode executar por no máximo 15 minutos (900 segundos) por invocação. Processos mais longos devem usar outras soluções, como ECS, Batch ou Step Functions para orquestrar etapas."
+  },
+  {
+    "id": "lambda-003",
+    "services": ["Lambda", "S3"],
+    "question": "Qual cenário é um exemplo clássico de integração orientada a eventos com o Lambda?",
+    "options": {
+      "A": "Executar uma função automaticamente quando um arquivo é enviado a um bucket S3",
+      "B": "Hospedar um banco de dados MySQL dentro da função",
+      "C": "Armazenar arquivos de forma permanente na função",
+      "D": "Substituir o DNS da aplicação"
+    },
+    "answer": "A",
+    "explanation": "Um upload no S3 pode disparar (trigger) uma função Lambda automaticamente — por exemplo, para gerar miniaturas de imagens ou processar o arquivo. Lambda não serve para hospedar bancos nem armazenar arquivos permanentemente."
+  },
+  {
+    "id": "rds-001",
+    "services": ["RDS"],
+    "question": "O que é o Amazon RDS?",
+    "options": {
+      "A": "Um serviço de banco de dados relacional gerenciado que suporta múltiplos motores como MySQL e PostgreSQL",
+      "B": "Um banco de dados NoSQL de chave-valor",
+      "C": "Um serviço de cache em memória",
+      "D": "Um data warehouse para análise de petabytes de dados"
+    },
+    "answer": "A",
+    "explanation": "O RDS (Relational Database Service) gerencia bancos relacionais — MySQL, PostgreSQL, MariaDB, Oracle, SQL Server e Aurora — automatizando backups, patches e failover. NoSQL chave-valor é o DynamoDB; cache é o ElastiCache; data warehouse é o Redshift."
+  },
+  {
+    "id": "rds-002",
+    "services": ["RDS"],
+    "question": "Qual é o objetivo principal da implantação Multi-AZ no Amazon RDS?",
+    "options": {
+      "A": "Aumentar a capacidade de leitura do banco de dados",
+      "B": "Reduzir os custos de armazenamento",
+      "C": "Alta disponibilidade com failover automático para uma réplica em outra Zona de Disponibilidade",
+      "D": "Distribuir o banco em várias regiões do mundo"
+    },
+    "answer": "C",
+    "explanation": "O Multi-AZ mantém uma réplica síncrona em outra Zona de Disponibilidade e faz failover automático em caso de falha. Para escalar LEITURAS, o recurso correto são as Read Replicas."
+  },
+  {
+    "id": "rds-003",
+    "services": ["RDS"],
+    "question": "Para melhorar o desempenho de uma aplicação com muitas consultas de LEITURA no RDS, qual recurso deve ser usado?",
+    "options": {
+      "A": "Multi-AZ",
+      "B": "Read Replicas (réplicas de leitura)",
+      "C": "Snapshots manuais",
+      "D": "Aumentar o tamanho do backup"
+    },
+    "answer": "B",
+    "explanation": "Read Replicas são cópias assíncronas do banco que atendem consultas de leitura, aliviando a instância principal. Multi-AZ é para disponibilidade (failover), não para desempenho de leitura."
+  },
+  {
+    "id": "dynamodb-001",
+    "services": ["DynamoDB"],
+    "question": "O Amazon DynamoDB é um banco de dados de qual tipo?",
+    "options": {
+      "A": "Relacional (SQL)",
+      "B": "NoSQL de chave-valor e documentos, totalmente gerenciado",
+      "C": "Grafos",
+      "D": "Data warehouse colunar"
+    },
+    "answer": "B",
+    "explanation": "O DynamoDB é um banco NoSQL de chave-valor e documentos, serverless, com latência de milissegundos em qualquer escala. Banco de grafos é o Neptune; data warehouse é o Redshift."
+  },
+  {
+    "id": "dynamodb-002",
+    "services": ["DynamoDB"],
+    "question": "Quais são os dois modos de capacidade do DynamoDB?",
+    "options": {
+      "A": "Básico e Premium",
+      "B": "Provisionado (provisioned) e Sob demanda (on-demand)",
+      "C": "Standard e Glacier",
+      "D": "Single-AZ e Multi-AZ"
+    },
+    "answer": "B",
+    "explanation": "No modo provisionado você define unidades de leitura/escrita (RCU/WCU); no modo on-demand a capacidade é ajustada automaticamente e você paga por requisição. Standard/Glacier são classes do S3."
+  },
+  {
+    "id": "cloudfront-001",
+    "services": ["CloudFront"],
+    "question": "Qual é a função do Amazon CloudFront?",
+    "options": {
+      "A": "Rede de entrega de conteúdo (CDN) que distribui conteúdo com baixa latência a partir de edge locations",
+      "B": "Firewall de aplicações web",
+      "C": "Serviço de DNS gerenciado",
+      "D": "Balanceador de carga entre instâncias EC2"
+    },
+    "answer": "A",
+    "explanation": "O CloudFront é a CDN da AWS: ele armazena cópias do conteúdo em centenas de edge locations pelo mundo, entregando com menor latência. WAF é o firewall de aplicações; DNS é o Route 53; balanceador é o ELB."
+  },
+  {
+    "id": "cloudfront-002",
+    "services": ["CloudFront", "S3"],
+    "question": "Qual combinação de serviços é a arquitetura clássica para hospedar um site estático de alta performance na AWS?",
+    "options": {
+      "A": "EC2 + EBS",
+      "B": "S3 (armazenando os arquivos) + CloudFront (distribuindo o conteúdo)",
+      "C": "RDS + Lambda",
+      "D": "DynamoDB + SQS"
+    },
+    "answer": "B",
+    "explanation": "Sites estáticos (HTML, CSS, JS) ficam no S3 e o CloudFront distribui esse conteúdo globalmente com cache nas edge locations, HTTPS e baixa latência — sem nenhum servidor para gerenciar."
+  },
+  {
+    "id": "route53-001",
+    "services": ["Route 53"],
+    "question": "O que é o Amazon Route 53?",
+    "options": {
+      "A": "Um serviço de rotas para VPN corporativa",
+      "B": "O serviço de DNS gerenciado da AWS, que também permite registrar domínios",
+      "C": "Um protocolo de roteamento interno das VPCs",
+      "D": "Um serviço de rastreamento de encomendas"
+    },
+    "answer": "B",
+    "explanation": "O Route 53 é o DNS gerenciado da AWS: traduz nomes de domínio em endereços IP, registra domínios e oferece políticas de roteamento avançadas. O nome vem da porta 53, usada pelo protocolo DNS."
+  },
+  {
+    "id": "route53-002",
+    "services": ["Route 53"],
+    "question": "Qual política de roteamento do Route 53 direciona o usuário para o endpoint que responde mais rápido para a localização dele?",
+    "options": {
+      "A": "Simple routing",
+      "B": "Failover routing",
+      "C": "Latency-based routing",
+      "D": "Weighted routing"
+    },
+    "answer": "C",
+    "explanation": "O roteamento baseado em latência (latency-based) envia cada usuário para a região AWS com menor latência para ele. Failover é para contingência; weighted distribui por pesos percentuais."
+  },
+  {
+    "id": "cloudwatch-001",
+    "services": ["CloudWatch"],
+    "question": "Qual é a função principal do Amazon CloudWatch?",
+    "options": {
+      "A": "Monitorar recursos e aplicações com métricas, logs e alarmes",
+      "B": "Auditar quem fez chamadas de API na conta",
+      "C": "Proteger contra ataques DDoS",
+      "D": "Gerenciar senhas e segredos de aplicações"
+    },
+    "answer": "A",
+    "explanation": "O CloudWatch coleta métricas (CPU, latência etc.), logs e permite criar alarmes e dashboards. Auditoria de chamadas de API é o CloudTrail; proteção DDoS é o Shield; segredos são gerenciados pelo Secrets Manager."
+  },
+  {
+    "id": "cloudwatch-002",
+    "services": ["CloudWatch", "Auto Scaling"],
+    "question": "Como o CloudWatch e o Auto Scaling trabalham juntos em uma arquitetura elástica?",
+    "options": {
+      "A": "O CloudWatch substitui o Auto Scaling em contas novas",
+      "B": "Um alarme do CloudWatch (ex.: CPU > 70%) pode disparar uma ação do Auto Scaling para adicionar instâncias",
+      "C": "O Auto Scaling impede o CloudWatch de coletar métricas",
+      "D": "Eles não podem ser usados juntos"
+    },
+    "answer": "B",
+    "explanation": "É o padrão clássico de elasticidade: o CloudWatch monitora uma métrica (como uso de CPU), e quando o alarme dispara, o Auto Scaling adiciona ou remove instâncias conforme a política definida."
+  },
+  {
+    "id": "cloudtrail-001",
+    "services": ["CloudTrail"],
+    "question": "Qual serviço registra QUEM fez QUAL chamada de API na sua conta AWS, quando e de onde?",
+    "options": {
+      "A": "CloudWatch",
+      "B": "AWS Config",
+      "C": "CloudTrail",
+      "D": "Trusted Advisor"
+    },
+    "answer": "C",
+    "explanation": "O CloudTrail é o serviço de auditoria e governança: registra as chamadas de API (console, CLI, SDK) com usuário, horário, IP de origem e parâmetros. O CloudWatch monitora métricas; o Config rastreia configuração de recursos."
+  },
+  {
+    "id": "sqs-001",
+    "services": ["SQS"],
+    "question": "Qual é o principal benefício arquitetural de usar o Amazon SQS entre dois componentes de uma aplicação?",
+    "options": {
+      "A": "Aumentar a velocidade da rede entre eles",
+      "B": "Desacoplar os componentes, permitindo que processem mensagens em ritmos diferentes",
+      "C": "Criptografar todo o tráfego da VPC",
+      "D": "Reduzir o custo das instâncias EC2"
+    },
+    "answer": "B",
+    "explanation": "O SQS (Simple Queue Service) é uma fila de mensagens gerenciada que desacopla produtores de consumidores: se o consumidor ficar lento ou indisponível, as mensagens aguardam na fila, aumentando a resiliência do sistema."
+  },
+  {
+    "id": "sqs-002",
+    "services": ["SQS"],
+    "question": "Qual a diferença entre filas Standard e FIFO no SQS?",
+    "options": {
+      "A": "FIFO garante ordem de entrega e processamento exatamente uma vez; Standard tem maior throughput mas entrega pelo menos uma vez, sem garantia de ordem",
+      "B": "Standard é paga e FIFO é gratuita",
+      "C": "FIFO só funciona com Lambda",
+      "D": "Standard guarda mensagens para sempre; FIFO apaga após 1 hora"
+    },
+    "answer": "A",
+    "explanation": "Filas FIFO (First-In-First-Out) garantem ordem estrita e processamento exactly-once, com throughput menor. Filas Standard oferecem throughput quase ilimitado, mas com entrega at-least-once e ordem não garantida."
+  },
+  {
+    "id": "sns-001",
+    "services": ["SNS"],
+    "question": "O Amazon SNS segue qual padrão de mensageria?",
+    "options": {
+      "A": "Fila ponto a ponto (um consumidor por mensagem)",
+      "B": "Publicação/assinatura (pub/sub), enviando a mesma mensagem para múltiplos assinantes",
+      "C": "Streaming de dados em tempo real com retenção",
+      "D": "RPC síncrono entre microsserviços"
+    },
+    "answer": "B",
+    "explanation": "O SNS (Simple Notification Service) é pub/sub: uma mensagem publicada em um tópico é entregue a TODOS os assinantes (e-mail, SMS, Lambda, SQS, HTTP). Fila ponto a ponto é o SQS; streaming com retenção é o Kinesis."
+  },
+  {
+    "id": "elb-001",
+    "services": ["Elastic Load Balancing"],
+    "question": "Qual é a função do Elastic Load Balancing (ELB)?",
+    "options": {
+      "A": "Distribuir automaticamente o tráfego de entrada entre múltiplos alvos, como instâncias EC2 em diferentes Zonas de Disponibilidade",
+      "B": "Balancear o custo mensal entre serviços da conta",
+      "C": "Acelerar consultas em bancos de dados",
+      "D": "Sincronizar arquivos entre regiões"
+    },
+    "answer": "A",
+    "explanation": "O ELB distribui requisições entre alvos saudáveis (instâncias, contêineres, IPs) em uma ou mais AZs, aumentando disponibilidade e tolerância a falhas, com health checks automáticos."
+  },
+  {
+    "id": "elb-002",
+    "services": ["Elastic Load Balancing"],
+    "question": "Qual tipo de load balancer da AWS opera na camada 7 (HTTP/HTTPS) e permite roteamento baseado em path e host?",
+    "options": {
+      "A": "Network Load Balancer (NLB)",
+      "B": "Classic Load Balancer",
+      "C": "Application Load Balancer (ALB)",
+      "D": "Gateway Load Balancer"
+    },
+    "answer": "C",
+    "explanation": "O ALB trabalha na camada de aplicação (camada 7), entendendo HTTP/HTTPS e roteando por URL, host ou cabeçalhos. O NLB opera na camada 4 (TCP/UDP) com altíssima performance e IP estático."
+  },
+  {
+    "id": "autoscaling-001",
+    "services": ["Auto Scaling", "EC2"],
+    "question": "O que o EC2 Auto Scaling faz quando a demanda da aplicação diminui?",
+    "options": {
+      "A": "Nada, ele só adiciona instâncias",
+      "B": "Remove instâncias automaticamente até o mínimo definido, reduzindo custos",
+      "C": "Desliga a conta AWS",
+      "D": "Migra a aplicação para outra região"
+    },
+    "answer": "B",
+    "explanation": "O Auto Scaling é bidirecional: escala PARA FORA (scale out) adicionando instâncias quando a demanda cresce e PARA DENTRO (scale in) removendo-as quando cai, respeitando os limites mínimo e máximo do grupo — otimizando custo."
+  },
+  {
+    "id": "autoscaling-002",
+    "services": ["Auto Scaling"],
+    "question": "Em um Auto Scaling Group, o que garante que instâncias com falha sejam substituídas?",
+    "options": {
+      "A": "O health check: instâncias não saudáveis são encerradas e substituídas automaticamente para manter a capacidade desejada",
+      "B": "Um administrador precisa substituí-las manualmente",
+      "C": "O CloudFront redireciona o tráfego para outra região",
+      "D": "O S3 restaura a instância a partir de um backup"
+    },
+    "answer": "A",
+    "explanation": "O Auto Scaling Group monitora a saúde das instâncias (via EC2 ou ELB health checks). Se uma instância falha, ela é encerrada e uma nova é lançada automaticamente para manter a capacidade desejada (desired capacity)."
+  },
+  {
+    "id": "ebs-001",
+    "services": ["EBS", "EC2"],
+    "question": "O que é o Amazon EBS?",
+    "options": {
+      "A": "Armazenamento de objetos acessível via HTTP",
+      "B": "Volumes de armazenamento em bloco persistentes para uso com instâncias EC2",
+      "C": "Um serviço de e-mail em massa",
+      "D": "Sistema de arquivos compartilhado entre milhares de instâncias"
+    },
+    "answer": "B",
+    "explanation": "O EBS (Elastic Block Store) fornece volumes de bloco persistentes que funcionam como 'discos' das instâncias EC2. Os dados persistem independentemente da vida da instância. Objetos são no S3; arquivos compartilhados, no EFS."
+  },
+  {
+    "id": "ebs-002",
+    "services": ["EBS"],
+    "question": "Como funcionam os snapshots do EBS?",
+    "options": {
+      "A": "São backups incrementais dos volumes, armazenados no S3",
+      "B": "São cópias completas feitas a cada hora, armazenadas na própria instância",
+      "C": "São fotos da tela do console AWS",
+      "D": "São réplicas síncronas em outra região"
+    },
+    "answer": "A",
+    "explanation": "Snapshots do EBS são backups INCREMENTAIS (só os blocos alterados desde o último snapshot são salvos), armazenados de forma durável no S3. Podem ser usados para criar novos volumes ou copiar dados entre regiões."
+  },
+  {
+    "id": "efs-001",
+    "services": ["EFS"],
+    "question": "Qual característica diferencia o Amazon EFS do EBS?",
+    "options": {
+      "A": "O EFS é um sistema de arquivos NFS elástico que pode ser montado simultaneamente por várias instâncias; o EBS é um volume de bloco ligado a uma instância por vez",
+      "B": "O EFS é mais barato que qualquer outra opção de armazenamento",
+      "C": "O EFS só funciona com Windows",
+      "D": "O EFS não persiste dados após desligar a instância"
+    },
+    "answer": "A",
+    "explanation": "O EFS (Elastic File System) é um sistema de arquivos NFS compartilhado e elástico, montável por múltiplas instâncias (Linux) ao mesmo tempo, crescendo e encolhendo automaticamente. Volumes EBS atendem uma instância por vez (salvo io2 Multi-Attach, caso específico)."
+  },
+  {
+    "id": "kms-001",
+    "services": ["KMS"],
+    "question": "Para que serve o AWS KMS?",
+    "options": {
+      "A": "Criar e gerenciar chaves criptográficas usadas para proteger dados em serviços AWS e aplicações",
+      "B": "Gerenciar as senhas dos usuários finais do seu site",
+      "C": "Monitorar quilômetros rodados de frotas",
+      "D": "Balancear tráfego entre chaves de API"
+    },
+    "answer": "A",
+    "explanation": "O KMS (Key Management Service) cria, armazena e controla o uso de chaves de criptografia, integrando-se nativamente a serviços como S3, EBS e RDS para criptografia em repouso, com auditoria via CloudTrail."
+  },
+  {
+    "id": "aurora-001",
+    "services": ["Aurora", "RDS"],
+    "question": "O que é o Amazon Aurora?",
+    "options": {
+      "A": "Um banco de dados relacional criado pela AWS, compatível com MySQL e PostgreSQL, com performance e disponibilidade superiores",
+      "B": "Um serviço de análise de imagens com IA",
+      "C": "Um sistema operacional para instâncias EC2",
+      "D": "Uma ferramenta de visualização de dados"
+    },
+    "answer": "A",
+    "explanation": "O Aurora é o banco relacional da própria AWS, compatível com MySQL e PostgreSQL, com até 5x a performance do MySQL padrão, replicação em 3 AZs (6 cópias dos dados) e failover rápido. Faz parte da família RDS."
+  },
+  {
+    "id": "elasticache-001",
+    "services": ["ElastiCache"],
+    "question": "Em qual cenário o Amazon ElastiCache é mais indicado?",
+    "options": {
+      "A": "Armazenar arquivos de vídeo de grande porte",
+      "B": "Adicionar uma camada de cache em memória (Redis ou Memcached) para acelerar leituras frequentes e aliviar o banco de dados",
+      "C": "Executar consultas SQL complexas em petabytes de dados",
+      "D": "Enviar notificações push para celulares"
+    },
+    "answer": "B",
+    "explanation": "O ElastiCache fornece Redis ou Memcached gerenciados: dados acessados com frequência ficam em memória (latência de microssegundos), reduzindo a carga no banco de dados principal."
+  },
+  {
+    "id": "apigateway-001",
+    "services": ["API Gateway", "Lambda"],
+    "question": "Qual dupla de serviços forma a arquitetura serverless clássica para expor uma API REST sem gerenciar servidores?",
+    "options": {
+      "A": "EC2 + RDS",
+      "B": "API Gateway + Lambda",
+      "C": "S3 + Glacier",
+      "D": "VPC + NAT Gateway"
+    },
+    "answer": "B",
+    "explanation": "O API Gateway recebe e gerencia as requisições HTTP (autenticação, throttling, versionamento) e as encaminha para funções Lambda que executam a lógica — arquitetura 100% serverless, pagando apenas pelo uso."
+  },
+  {
+    "id": "ecs-001",
+    "services": ["ECS"],
+    "question": "O que é o Amazon ECS?",
+    "options": {
+      "A": "Um serviço de orquestração de contêineres Docker altamente escalável",
+      "B": "Um serviço de e-mail corporativo",
+      "C": "Um editor de código na nuvem",
+      "D": "Um serviço de backup de contêineres"
+    },
+    "answer": "A",
+    "explanation": "O ECS (Elastic Container Service) orquestra contêineres Docker: agenda, executa, escala e monitora contêineres em clusters, integrado a IAM, VPC e load balancers."
+  },
+  {
+    "id": "fargate-001",
+    "services": ["Fargate", "ECS"],
+    "question": "Qual é a proposta do AWS Fargate?",
+    "options": {
+      "A": "Executar contêineres sem provisionar nem gerenciar servidores, pagando por vCPU e memória usadas",
+      "B": "Fornecer GPUs dedicadas para jogos",
+      "C": "Gerenciar frotas de veículos autônomos",
+      "D": "Substituir o Docker por uma tecnologia proprietária"
+    },
+    "answer": "A",
+    "explanation": "O Fargate é o motor de computação serverless para contêineres (ECS e EKS): você define CPU e memória da tarefa e a AWS cuida de toda a infraestrutura subjacente — sem gerenciar instâncias EC2."
+  },
+  {
+    "id": "eks-001",
+    "services": ["EKS"],
+    "question": "O Amazon EKS é um serviço gerenciado de qual tecnologia?",
+    "options": {
+      "A": "Apache Kafka",
+      "B": "Kubernetes",
+      "C": "Jenkins",
+      "D": "Elasticsearch"
+    },
+    "answer": "B",
+    "explanation": "O EKS (Elastic Kubernetes Service) executa o plano de controle do Kubernetes de forma gerenciada e certificada, sem que você precise operar os masters. Kafka gerenciado é o MSK; busca é o OpenSearch Service."
+  },
+  {
+    "id": "cognito-001",
+    "services": ["Cognito"],
+    "question": "Qual problema o Amazon Cognito resolve?",
+    "options": {
+      "A": "Autenticação, autorização e gerenciamento de usuários para aplicações web e mobile, incluindo login social",
+      "B": "Tradução automática de textos",
+      "C": "Reconhecimento de objetos em imagens",
+      "D": "Cobrança de assinaturas recorrentes"
+    },
+    "answer": "A",
+    "explanation": "O Cognito fornece cadastro, login e controle de acesso para apps, com suporte a login social (Google, Facebook, Apple), MFA e emissão de tokens — sem você construir um sistema de autenticação do zero."
+  },
+  {
+    "id": "beanstalk-001",
+    "services": ["Elastic Beanstalk"],
+    "question": "O que o AWS Elastic Beanstalk faz quando você envia o código da sua aplicação?",
+    "options": {
+      "A": "Provisiona e gerencia automaticamente a infraestrutura (EC2, load balancer, auto scaling), cuidando do deploy",
+      "B": "Apenas armazena o código como backup",
+      "C": "Converte o código para outra linguagem",
+      "D": "Publica o código automaticamente no GitHub"
+    },
+    "answer": "A",
+    "explanation": "O Beanstalk é um PaaS: você envia o código (Java, Python, Node.js, PHP etc.) e ele provisiona instâncias, balanceador, auto scaling e monitoramento automaticamente — mantendo você no controle total dos recursos, se quiser ajustá-los."
+  },
+  {
+    "id": "geral-001",
+    "services": ["Geral"],
+    "question": "Qual é a relação correta entre Regiões e Zonas de Disponibilidade (AZs) na AWS?",
+    "options": {
+      "A": "Cada Região contém múltiplas AZs, que são datacenters isolados conectados por links de baixa latência",
+      "B": "Cada AZ contém várias Regiões",
+      "C": "Região e AZ são o mesmo conceito",
+      "D": "AZs só existem nos Estados Unidos"
+    },
+    "answer": "A",
+    "explanation": "Uma Região é uma área geográfica (ex.: São Paulo, sa-east-1) que contém múltiplas Zonas de Disponibilidade — grupos de datacenters isolados fisicamente, mas interligados. Distribuir recursos entre AZs aumenta a disponibilidade."
+  },
+  {
+    "id": "geral-002",
+    "services": ["Geral"],
+    "question": "No Modelo de Responsabilidade Compartilhada da AWS, qual item é responsabilidade do CLIENTE?",
+    "options": {
+      "A": "Segurança física dos datacenters",
+      "B": "Manutenção do hardware dos servidores",
+      "C": "Configuração das permissões IAM e proteção dos dados armazenados",
+      "D": "Substituição de discos com defeito"
+    },
+    "answer": "C",
+    "explanation": "A AWS é responsável pela segurança DA nuvem (física, hardware, rede global); o cliente é responsável pela segurança NA nuvem: dados, configuração de IAM, criptografia, patches do sistema operacional das instâncias, etc."
+  }
+]
